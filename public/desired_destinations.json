@@ -1,0 +1,74 @@
+{
+    "destinations": [
+        {
+            "city": "Tokyo",
+            "country": "Japan",
+            "imageUrl": "images/tokyo.webp",
+            "ratings": {
+                "popularity": 5,
+                "views": 4,
+                "budget": 2
+            },
+            "planning": {
+                "bestTime": "Spring for cherry blossoms",
+                "inspiration": "Lost in Translation (film)"
+            }
+        },
+        {
+            "city": "Sydney",
+            "country": "Australia",
+            "imageUrl": "images/sydney.webp",
+            "ratings": {
+                "popularity": 4,
+                "views": 5,
+                "budget": 3
+            },
+            "planning": {
+                "bestTime": "October to November (Spring)",
+                "inspiration": "Finding Nemo's Sydney scenes"
+            }
+        },
+        {
+            "city": "Bangkok",
+            "country": "Thailand",
+            "imageUrl": "images/bangkok.webp",
+            "ratings": {
+                "popularity": 4,
+                "views": 4,
+                "budget": 5
+            },
+            "planning": {
+                "bestTime": "November to February (cool season)",
+                "inspiration": "Street Food: Asia (Netflix)"
+            }
+        },
+        {
+            "city": "Santorini",
+            "country": "Greece",
+            "imageUrl": "images/santorini.webp",
+            "ratings": {
+                "popularity": 5,
+                "views": 5,
+                "budget": 2
+            },
+            "planning": {
+                "bestTime": "September to October (less crowds)",
+                "inspiration": "Mamma Mia! (film locations)"
+            }
+        },
+        {
+            "city": "Istanbul",
+            "country": "Turkey",
+            "imageUrl": "images/istanbul.webp",
+            "ratings": {
+                "popularity": 4,
+                "views": 5,
+                "budget": 4
+            },
+            "planning": {
+                "bestTime": "April to May or September to October",
+                "inspiration": "Midnight Express (but for the architecture)"
+            }
+        }
+    ]
+}
