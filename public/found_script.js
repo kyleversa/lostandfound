@@ -93,9 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Most Unexpected Moment:</strong> ${dest.experiences.unexpected}</p>
                 <p><strong>Vibe & Atmosphere :</strong> ${dest.experiences.vibe}</p>
                 <div class="ratings">
-                    <p>Local People & Hospitality 🤝💁🏼‍♂️: <span class="stars">${'⭐'.repeat(dest.ratings.hospitality)}</span></p>
-                    <p>Walkability & Transportation 🚶‍♂️🚆: <span class="stars">${'⭐'.repeat(dest.ratings.walkability)}</span></p>
-                    <p>Relaxation vs. Adventure 🏝🏄‍♂️: <span class="stars">${'⭐'.repeat(dest.ratings.adventure)}</span></p>
+                    <p>Local People & Hospitality: <span class="stars">${'⭐'.repeat(dest.ratings.hospitality)}</span></p>
+                    <p>Walkability & Transportation: <span class="stars">${'⭐'.repeat(dest.ratings.walkability)}</span></p>
+                    <p>Relaxation vs. Adventure: <span class="stars">${'⭐'.repeat(dest.ratings.adventure)}</span></p>
                 </div>
                 </div>
             </div>

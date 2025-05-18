@@ -241,13 +241,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card-body">
                     <h5 class="card-title">${dest.city}, ${dest.country}</h5>
                     <div class="planning">
-                    <p><strong>Ideal Best Time to Visit:</strong> ${dest.planning.bestTime}</p>
+                    <p><strong>Ideal Time to Visit:</strong> ${dest.planning.bestTime}</p>
                     <p><strong>What Draws Me To It:</strong> ${dest.planning.inspiration}</p>
                     </div>
                     <div class="ratings mt-3">
-                    <p>Popular Travel Spot 📍🗺️:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
-                    <p>Postcard-Worthy Views 📸🎨:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
-                    <p>Budget Friendly 💰💵:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
+                    <p>Popular Travel Spot:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
+                    <p>Postcard-Worthy Views:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
+                    <p>Budget Friendly:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
                     </div>
                 </div>
                 </div>
