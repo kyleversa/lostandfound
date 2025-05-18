@@ -14,6 +14,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve HTML pages
+app.get('/', (req, res) => {
+  res.redirect('/found');
+});
+
 app.get('/found', (req, res) => {
   res.sendFile(path.join(__dirname, 'found.html'));
 });
