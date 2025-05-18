@@ -85,6 +85,9 @@ This isn’t just a class project — it’s a working prototype of a product I�
 - Fully functional MVP  
 - Mobile-optimized and visually polished  
 - Deployed on Render and ready to explore
+- Responsive design - Works beautifully on mobile, tablet, and desktop
+
+
 
 ---
 
