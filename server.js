@@ -12,6 +12,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// === Homepage Routing ===
+app.get('/', (req, res) => {
+  res.redirect('/found');
+});
+
+app.get('/found', (req, res) => {
+  res.sendFile(path.join(__dirname, 'found.html'));
+});
+
+app.get('/lost', (req, res) => {
+  res.sendFile(path.join(__dirname, 'lost.html'));
+});
+
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("✅ Connected to MongoDB"))
@@ -64,10 +77,7 @@ const mongoURI = process.env.MONGODB_URI;
 
 // === ROUTES ===
 
-// Homepage (found.html)
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'found.html'));
-});
+
 
 // === Media Routes ===
 
