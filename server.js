@@ -1,106 +1,149 @@
 
+require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require('dotenv');
-const fs = require('fs');
-const { MongoClient } = require('mongodb');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGODB_URI;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve HTML pages
-app.get('/', (req, res) => {
-  res.redirect('/found');
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
+
+// === MODELS ===
+const mediaSchema = new mongoose.Schema({
+  title: String,
+  creator: String,
+  type: String,
+  date: String,
+  website: String,
+  tags: [String],
+  location: String,
+  posterUrl: String
+});
+const Media = mongoose.model('Media', mediaSchema);
+
+const bookSchema = new mongoose.Schema({
+  title: String,
+  author: String,
+  publisher: String,
+  date: String,
+  website: String,
+  tags: [String],
+  location: String
+});
+const Book = mongoose.model('Book', bookSchema);
+
+// === ROUTES ===
+
+// Static Pages
+app.get('/', (req, res) => res.redirect('/found'));
+app.get('/found', (req, res) => res.sendFile(path.join(__dirname, 'found.html')));
+app.get('/lost', (req, res) => res.sendFile(path.join(__dirname, 'lost.html')));
+
+// Media Library Routes
+app.get('/medialibrary/list', async (req, res) => {
+  try {
+    const mediaItems = await Media.find();
+    // Rendered HTML content here...
+    res.send(/* long HTML string or extracted template */);
+  } catch (err) {
+    res.status(500).send('Error fetching media');
+  }
+});
+app.get('/medialibrary/add', (req, res) => {
+  res.send(/* HTML form for adding media */);
+});
+app.post('/medialibrary/add', async (req, res) => {
+  try {
+    const { title, creator, type, date, website, location, tags } = req.body;
+    const tmdbApiKey = process.env.TMDB_API_KEY;
+    const tmdbUrl = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbApiKey}&query=${encodeURIComponent(title)}`;
+
+    let posterUrl = '';
+    try {
+      const tmdbResponse = await fetch(tmdbUrl);
+      const tmdbData = await tmdbResponse.json();
+      const match = tmdbData.results?.find(item =>
+        (item.title && item.title.toLowerCase() === title.toLowerCase()) ||
+        (item.name && item.name.toLowerCase() === title.toLowerCase())
+      ) || tmdbData.results?.[0];
+      posterUrl = match?.poster_path
+        ? `https://image.tmdb.org/t/p/w300${match.poster_path}`
+        : '';
+    } catch (err) {
+      console.error('TMDB fetch error:', err);
+    }
+
+    const media = new Media({
+      title, creator, type, date, website, location, posterUrl,
+      tags: tags ? tags.split(',').map(t => t.trim()) : []
+    });
+
+    await media.save();
+    res.redirect('/medialibrary/success');
+  } catch (err) {
+    res.status(500).send('Error saving media');
+  }
+});
+app.get('/medialibrary/success', (req, res) => {
+  res.send(/* success message HTML */);
+});
+app.delete('/medialibrary/delete/:id', async (req, res) => {
+  try {
+    await Media.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).send('Delete failed');
+  }
 });
 
-app.get('/found', (req, res) => {
-  res.sendFile(path.join(__dirname, 'found.html'));
+// Book Library Routes
+app.get('/bookinventory/list', async (req, res) => {
+  try {
+    const books = await Book.find();
+    res.send(/* HTML list of books */);
+  } catch (err) {
+    res.status(500).json({ error: "Error fetching books" });
+  }
+});
+app.get('/bookinventory/add', (req, res) => {
+  res.send(/* HTML form to add a book */);
+});
+app.post('/bookinventory/add', async (req, res) => {
+  try {
+    const { title, author, publisher, date, website, location, tags } = req.body;
+    const newBook = new Book({
+      title, author, publisher, date, website, location,
+      tags: tags ? tags.split(',').map(tag => tag.trim()) : []
+    });
+    await newBook.save();
+    res.redirect('/bookinventory/success');
+  } catch (err) {
+    res.status(500).json({ error: "Error adding book" });
+  }
+});
+app.get('/bookinventory/success', (req, res) => {
+  res.send(/* success message HTML */);
+});
+app.delete('/bookinventory/delete/:id', async (req, res) => {
+  try {
+    const bookId = req.params.id;
+    await Book.findByIdAndDelete(bookId);
+    res.json({ message: "Book deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Error deleting book" });
+  }
 });
 
-app.get('/lost', (req, res) => {
-  res.sendFile(path.join(__dirname, 'lost.html'));
-});
-
-// MongoDB endpoints
-MongoClient.connect(MONGO_URI)
-  .then(client => {
-    console.log('Connected to MongoDB Atlas');
-    const db = client.db(); // Defaults to database from URI
-
-    const booksCollection = db.collection('books');
-    const mediaCollection = db.collection('media');
-
-    // GET all books (Lost)
-    app.get('/api/books', async (req, res) => {
-      try {
-        const books = await booksCollection.find().toArray();
-        res.json(books);
-      } catch (err) {
-        res.status(500).send('Error retrieving books');
-      }
-    });
-
-    // ADD a book (Lost)
-    app.post('/api/books', async (req, res) => {
-      try {
-        const newBook = req.body;
-        const result = await booksCollection.insertOne(newBook);
-        res.status(201).json(result);
-      } catch (err) {
-        res.status(500).send('Error adding book');
-      }
-    });
-
-    // DELETE a book (Lost)
-    app.delete('/api/books/:id', async (req, res) => {
-      try {
-        const { id } = req.params;
-        const result = await booksCollection.deleteOne({ _id: new MongoClient.ObjectId(id) });
-        res.json(result);
-      } catch (err) {
-        res.status(500).send('Error deleting book');
-      }
-    });
-
-    // GET all media (Found)
-    app.get('/api/media', async (req, res) => {
-      try {
-        const media = await mediaCollection.find().toArray();
-        res.json(media);
-      } catch (err) {
-        res.status(500).send('Error retrieving media');
-      }
-    });
-
-    // ADD a media entry (Found)
-    app.post('/api/media', async (req, res) => {
-      try {
-        const newMedia = req.body;
-        const result = await mediaCollection.insertOne(newMedia);
-        res.status(201).json(result);
-      } catch (err) {
-        res.status(500).send('Error adding media');
-      }
-    });
-
-    // DELETE a media entry (Found)
-    app.delete('/api/media/:id', async (req, res) => {
-      try {
-        const { id } = req.params;
-        const result = await mediaCollection.deleteOne({ _id: new MongoClient.ObjectId(id) });
-        res.json(result);
-      } catch (err) {
-        res.status(500).send('Error deleting media');
-      }
-    });
-  })
-  .catch(err => console.error('MongoDB connection error:', err));
-
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
