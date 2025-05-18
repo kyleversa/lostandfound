@@ -12,11 +12,21 @@
     "type": "git",
     "url": "git+https://github.com/kyleversa/lostandfound.git"
   },
-  "keywords": ["travel", "node", "express", "mongodb"],
+  "keywords": [
+    "travel",
+    "node",
+    "express",
+    "mongodb"
+  ],
   "author": "Kyle Purves",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kyleversa/lostandfound/issues"
   },
-  "homepage": "https://github.com/kyleversa/lostandfound#readme"
+  "homepage": "https://github.com/kyleversa/lostandfound#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0"
+  }
 }
