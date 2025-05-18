@@ -369,14 +369,15 @@ app.get('/medialibrary/add', (req, res) => {
                 preview.innerHTML = "<img src='" + posterUrl + "' class='book-cover-image' alt='" + title + " Poster' style='width: 150px; border-radius: 5px;'>";
 
                 let input = document.getElementById('posterUrl');
-                if (!input) {
-                  input = document.createElement('input');
-                  input.type = 'hidden';
-                  input.name = 'posterUrl';
-                  input.id = 'posterUrl';
-                  document.querySelector('form').appendChild(input);
-                }
-                input.value = posterUrl;
+                  if (!input) {
+                    input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'posterUrl';
+                    input.id = 'posterUrl';
+                    document.querySelector('form').appendChild(input);
+                  }
+                  input.value = posterUrl;
+
               } else {
                 preview.innerHTML = "<div class='book-cover'><div class='book-spine'></div><div class='book-title-on-cover'>" + title + "</div></div>";
               }
@@ -545,36 +546,33 @@ app.get('/medialibrary/success', (req, res) => {
 // Handle Media Submission
 app.post('/medialibrary/add', async (req, res) => {
   try {
-    const { title, creator, type, date, website, location, tags } = req.body;
+    let { title, creator, type, date, website, location, tags, posterUrl } = req.body;
 
-    // TMDB API request
-  const tmdbApiKey = process.env.TMDB_API_KEY;
-    const tmdbUrl = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbApiKey}&query=${encodeURIComponent(title)}`;
+    // If no posterUrl was sent from the client, try to fetch from TMDB as fallback
+    if (!posterUrl && title) {
+      const tmdbApiKey = process.env.TMDB_API_KEY;
+      const tmdbUrl = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbApiKey}&query=${encodeURIComponent(title)}`;
 
-    let posterUrl = '';
-    try {
-      const tmdbResponse = await fetch(tmdbUrl);
-      const tmdbData = await tmdbResponse.json();
+      try {
+        const tmdbResponse = await fetch(tmdbUrl);
+        const tmdbData = await tmdbResponse.json();
 
-      let match = null;
-      if (tmdbData.results && tmdbData.results.length > 0) {
-        match = tmdbData.results.find(item =>
-          (item.title && item.title.toLowerCase() === title.toLowerCase()) ||
-          (item.name && item.name.toLowerCase() === title.toLowerCase())
-        ) || tmdbData.results[0]; // fallback to first result
+        let match = null;
+        if (tmdbData.results && tmdbData.results.length > 0) {
+          match = tmdbData.results.find(item =>
+            (item.title && item.title.toLowerCase() === title.toLowerCase()) ||
+            (item.name && item.name.toLowerCase() === title.toLowerCase())
+          ) || tmdbData.results[0];
+        }
+
+        posterUrl = match && match.poster_path
+          ? `https://image.tmdb.org/t/p/w300${match.poster_path}`
+          : '';
+
+      } catch (err) {
+        console.error('TMDB fallback fetch error:', err);
       }
-
-      posterUrl = match && match.poster_path
-        ? `https://image.tmdb.org/t/p/w300${match.poster_path}`
-        : '';
-
-    } catch (err) {
-      console.error('TMDB fetch error:', err);
     }
-
-
-
-    console.log("Saving media with poster URL:", posterUrl);
 
     const media = new Media({
       title,
@@ -583,13 +581,14 @@ app.post('/medialibrary/add', async (req, res) => {
       date,
       website,
       location,
-      posterUrl, // Save the poster!
+      posterUrl, // uses client input or fallback
       tags: tags ? tags.split(',').map(t => t.trim()) : []
     });
 
     await media.save();
     res.redirect('/medialibrary/success');
   } catch (err) {
+    console.error("Media save error:", err);
     res.status(500).send('Error saving media');
   }
 });
@@ -605,8 +604,9 @@ app.delete('/medialibrary/delete/:id', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Found server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
   // Load environment variables
 
 // Function to get Open Library image URL
@@ -622,10 +622,7 @@ function getOpenLibraryImageUrl(title, author) {
 
 
 
-// Main route - Serve Lost Page
-app.get('/', function(req, res){
-   res.sendFile(path.join(__dirname, 'lost.html'));
-});
+
 
 // Travel Books Page (Book List)
 app.get('/bookinventory/list', async (req, res) => {
@@ -1040,19 +1037,5 @@ app.delete('/bookinventory/delete/:id', async (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
-
-
-
-
-
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
