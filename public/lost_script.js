@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="ratings mt-3">
                     <p>Popular Travel Spot:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
                     <p>Postcard-Worthy Views:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
-                    <p>Budget Friendly:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
+                    <p>Budget Friendly Area:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
                     </div>
                 </div>
                 </div>
