@@ -70,16 +70,6 @@ const mongoURI = process.env.MONGODB_URI;
 
 
 
-// Media Schema
-
-
-
-
-// === ROUTES ===
-
-
-
-// === Media Routes ===
 
 // Media List Page
 app.get('/medialibrary/list', async (req, res) => {
@@ -647,7 +637,7 @@ app.get('/bookinventory/list', async (req, res) => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link book-nav-link" href="/">Back to Homepage</a>
+                        <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link book-nav-link" href="/bookinventory/add">Add New Book</a>
@@ -687,7 +677,7 @@ app.get('/bookinventory/list', async (req, res) => {
                       <p><strong>Publisher:</strong> ${book.publisher}</p>
                       <p><strong>Published:</strong> ${book.date}</p>
                       <p><strong>Location:</strong> ${book.location || 'Not specified'}</p>
-                      <p><strong>Website:</strong> <a href="${book.website}" target="_blank" class="book-link">${book.publisher} Website</a></p>
+                      <p><strong>Website:</strong> <a href="${book.website}" target="_blank" class="book-link">${new URL(book.website).hostname}</a></p>
                       
                       <div class="book-tags-container">
                           <p><strong>Tags:</strong></p>
@@ -777,7 +767,7 @@ app.get('/bookinventory/add', function(req, res){
           <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/">Back to Homepage</a>
+                  <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link book-nav-link" href="/bookinventory/list">View Book Inventory</a>
@@ -937,7 +927,7 @@ app.get('/bookinventory/success', (req, res) => {
           <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/">Back to Homepage</a>
+                  <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link book-nav-link" href="/bookinventory/list">View Book Inventory</a>
@@ -1035,7 +1025,6 @@ app.delete('/bookinventory/delete/:id', async (req, res) => {
         res.status(500).json({ error: "Error deleting book" });
     }
 });
-
 
 
 
