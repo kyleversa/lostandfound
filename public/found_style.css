@@ -789,4 +789,19 @@ input:focus, textarea:focus {
   color: #1B1B2F !important;
 }
 
+.navbar-collapse {
+    background-color: #FFD59A;
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #8A4E00;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #A67C52;
+}
 
