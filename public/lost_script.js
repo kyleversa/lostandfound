@@ -223,37 +223,38 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Lost Memory Cards Loader
-    fetch('/desired_destinations.json')
+   // Lost Memory Cards Loader
+        fetch('/desired_destinations.json')
         .then(response => response.json())
         .then(data => {
             const destinationGrid = document.getElementById("destinationGrid");
             if (!destinationGrid) return;
             destinationGrid.innerHTML = '';
             data.destinations.forEach(dest => {
-                const card = document.createElement("div");
-                card.className = "col-md-4 mb-4";
-                card.innerHTML = `
-                    <div class="card h-100">
-                        <div class="card-img-container">
-                            <img src="${dest.imageUrl}" class="card-img-top" alt="${dest.city}">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">${dest.city}, ${dest.country}</h5>
-                            <p class="card-text"><strong>Inspiration:</strong> ${dest.planning.inspiration}</p>
-                            <div class="ratings">
-                                <p>Popular: <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
-                                <p>Photogenic: <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
-                                <p>Budget: <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
-                            </div>
-                            <div class="planning">
-                                <p><strong>Best Time to Visit:</strong> ${dest.planning.bestTime}</p>
-                            </div>
-                        </div>
+            const card = document.createElement("div");
+            card.className = "col-md-4 mb-4";
+            card.innerHTML = `
+                <div class="card h-100">
+                <div class="card-img-container">
+                    <img src="${dest.imageUrl}" class="card-img-top" alt="${dest.city}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${dest.city}, ${dest.country}</h5>
+                    <div class="planning">
+                    <p><strong>Ideal Best Time to Visit:</strong> ${dest.planning.bestTime}</p>
+                    <p><strong>What Draws Me To It:</strong> ${dest.planning.inspiration}</p>
                     </div>
-                `;
-                destinationGrid.appendChild(card);
+                    <div class="ratings mt-3">
+                    <p>📍🗺️ <strong>Popular Travel Spot:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
+                    <p>📸🎨 <strong>Postcard-Worthy Views:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
+                    <p>💰💵 <strong>Budget Friendly:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
+                    </div>
+                </div>
+                </div>
+            `;
+            destinationGrid.appendChild(card);
             });
         })
+
         .catch(err => console.error("❌ Error loading destinations:", err));
 });

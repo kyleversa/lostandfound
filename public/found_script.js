@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card-body">
                 <h5 class="card-title">${dest.city}, ${dest.country}</h5>
                 <p><strong>Most Unexpected Moment:</strong> ${dest.experiences.unexpected}</p>
-                <p><strong>Vibe & Atmosphere 🎨:</strong> ${dest.experiences.vibe}</p>
+                <p><strong>Vibe & Atmosphere :</strong> ${dest.experiences.vibe}</p>
                 <div class="ratings">
                     <p>Local People & Hospitality 🤝: <span class="stars">${'⭐'.repeat(dest.ratings.hospitality)}</span></p>
                     <p>Walkability & Transportation 🚶‍♂️🚆: <span class="stars">${'⭐'.repeat(dest.ratings.walkability)}</span></p>
