@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found: Places I've Been</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/found_style.css">
+    <script src="/found_script.js" defer></script>
+</head>
+<button onclick="scrollToTop()" id="backToTopBtn" title="Back to Top">Back To Top</button>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg nav-bar found-nav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-links-found">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ratings">Postcards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Iconic Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reflections">Reflections</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/medialibrary/list">Media Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://localhost:3000" class="btn btn-outline-primary">Visit Lost Site</a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div class="hero-carousel">
+        <div class="carousel-container">
+            <img id="ajax-image" src="images/paris.webp" alt="Destination Preview" class="carousel-image">
+            <div class="carousel-overlay">
+                <p id="ajax-description" class="carousel-text">Loading description...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-container">
+            <h1 class="page-title">Found: Places I Have Been</h1>
+            <p class="page-subtitle">Kyle Versa</p>
+        </div>
+    </header>
+
+    <!-- Memory Card Ratings Section -->
+    <section id="ratings" class="json-content-section container mt-5">
+        <h2 class="text-center mb-4" style="color: rgb(166, 124, 82);">Postcards</h2>
+        <div id="destinationGrid" class="row"></div>
+    </section>
+
+    <!-- Iconic Destinations Section -->
+    <section id="destinations" class="destination-section">
+        <h2 class="destination-title">Iconic Destinations</h2>
+ <!-- Paris Card -->
+        <div class="destination-card">
+            <img class="destination-image" src="images/paris.webp" alt="Paris Cityscape" loading="lazy">
+            <div class="destination-content">
+                <h3 class="destination-name">Paris, France</h3>
+                <p class="destination-description">Paris swept me off my feet with its romantic charm, historic streets, and artful atmosphere. The cafes, the museums, the riverbanks — every corner of this city invited me to slow down and savor.</p>
+                <div class="interactive-container">
+                    <p id="paris-text">Click the button to reveal a hidden gem memory!</p>
+                    <button class="action-button" onclick="updateDestinationText('paris', 'Stumbling into a poetry reading at Shakespeare & Co. on a rainy evening. It felt like walking into a movie.')">Click Me</button>
+                    <button class="action-button" onclick="toggleBucketItem('paris')">Trip Highlight</button>
+                    <p id="paris-bucket" style="display: none">Sharing a bottle of wine on the steps of Sacré-Cœur as the sun set over Montmartre.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-divider"></div>
+
+        <!-- New York City Card -->
+        <div class="destination-card">
+            <img class="destination-image" src="images/new_york_city.webp" alt="New York City" loading="lazy">
+            <div class="destination-content">
+                <h3 class="destination-name">New York City, USA</h3>
+                <p class="destination-description">New York pulsed with energy — the kind that makes you feel alive and awake. It was Broadway lights, corner bagels, fire escapes, and subway musicians all wrapped into one.</p>
+                <div class="interactive-container">
+                    <p id="nyc-text">Click the button to reveal a hidden gem memory!</p>
+                    <button class="action-button" onclick="updateDestinationText('nyc', 'Watching a Shakespeare play in Central Park surrounded by locals and fireflies.')">Click Me</button>
+                    <button class="action-button" onclick="toggleBucketItem('nyc')">Trip Highlight</button>
+                    <p id="nyc-bucket" style="display: none">A surprise rooftop jazz bar in the East Village where the whole crowd danced.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-divider"></div>
+
+        <!-- Tuscany Card -->
+        <div class="destination-card">
+            <img class="destination-image" src="images/tuscany.webp" alt="Tuscany Vineyard" loading="lazy">
+            <div class="destination-content">
+                <h3 class="destination-name">Tuscany, Italy</h3>
+                <p class="destination-description">Tuscany was like stepping into a dream: sun-drenched hills, rows of vines, and rustic charm in every direction. I explored medieval towns, tasted incredible wines, and breathed in the slower rhythm of life.</p>
+                <div class="interactive-container">
+                    <p id="tuscany-text">Click the button to reveal a hidden gem memory!</p>
+                    <button class="action-button" onclick="updateDestinationText('tuscany', 'Learning how to make pici pasta from a local grandmother in a farmhouse kitchen.')">Click Me</button>
+                    <button class="action-button" onclick="toggleBucketItem('tuscany')">Trip Highlight</button>
+                    <p id="tuscany-bucket" style="display: none">Watching the sunrise from a hilltop in Montepulciano with fresh espresso.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-divider"></div>
+
+        <!-- London Card -->
+        <div class="destination-card">
+            <img class="destination-image" src="images/london.webp" alt="London" loading="lazy">
+            <div class="destination-content">
+                <h3 class="destination-name">London, England</h3>
+                <p class="destination-description">London was a whirlwind of history and cutting-edge culture. Museums by day, speakeasies by night — and a misty magic that wrapped everything in cinematic charm.</p>
+                <div class="interactive-container">
+                    <p id="london-text">Click the button to reveal a hidden gem memory!</p>
+                    <button class="action-button" onclick="updateDestinationText('london', 'Finding a hidden speakeasy behind a bookshelf in Soho and sipping gin with new friends.')">Click Me</button>
+                    <button class="action-button" onclick="toggleBucketItem('london')">Trip Highlight</button>
+                    <p id="london-bucket" style="display: none">Listening to a local choir rehearse inside St. Paul’s Cathedral.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="destination-divider"></div>
+
+        <!-- Barcelona Card -->
+        <div class="destination-card">
+            <img class="destination-image" src="images/barcelona.webp" alt="Barcelona" loading="lazy">
+            <div class="destination-content">
+                <h3 class="destination-name">Barcelona, Spain</h3>
+                <p class="destination-description">Barcelona dazzled with color, curves, and coastal calm. Gaudí’s surreal architecture and the city’s vibrant food scene made every turn feel new and alive.</p>
+                <div class="interactive-container">
+                    <p id="barcelona-text">Click the button to reveal a hidden gem memory!</p>
+                    <button class="action-button" onclick="updateDestinationText('barcelona', 'Joining a spontaneous street festival in the Gothic Quarter — music, lights, and locals welcoming us like old friends.')">Click Me</button>
+                    <button class="action-button" onclick="toggleBucketItem('barcelona')">Trip Highlight</button>
+                    <p id="barcelona-bucket" style="display: none">Eating fresh seafood on a balcony overlooking the Mediterranean.</p>
+                </div>
+            </div>
+        </div>
+    </section>    </section>
+
+    <!-- Reflection Table Section -->
+    <section id="reflections" class="reflections-section">
+        <h2 class="destination-title">Reflections</h2>
+        <table class="reflections-table">
+            <thead>
+                <tr>
+                    <th colspan="3" class="reflections-header">Travel Highlights</th>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td rowspan="3">France</td><td>Paris</td><td>Sunset at the Eiffel Tower</td></tr>
+                <tr><td>Lyon</td><td>Exploring the old town and gastronomy</td></tr>
+                <tr><td>Marseille</td><td>Visiting the Calanques and enjoying Mediterranean views</td></tr>
+                <tr><td rowspan="3">USA</td><td>New York City</td><td>Seeing a Broadway show</td></tr>
+                <tr><td>Los Angeles</td><td>Exploring Hollywood and Venice Beach</td></tr>
+                <tr><td>Chicago</td><td>Admiring the skyline from the Willis Tower and deep-dish pizza</td></tr>
+                <tr><td rowspan="3">Italy</td><td>Rome</td><td>Visiting the Colosseum and the Vatican</td></tr>
+                <tr><td>Venice</td><td>Gondola rides and exploring canals</td></tr>
+                <tr><td>Florence</td><td>Marveling at Renaissance art and climbing the Duomo</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Button to Switch to Lost -->
+    <section class="interactive-container">
+        <h2 class="destination-title">Switch to Lost</h2>
+          <a href="http://localhost:3000" class="action-button">Visit Found: Places I've Been</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="copyright-text">&copy; 2025 Kyle Versa. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+<!-- Back to Top Button -->
+<button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+<script>
+  // Show button on scroll
+  window.onscroll = function () {
+    const btn = document.getElementById("backToTopBtn");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  // Scroll to top
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
+

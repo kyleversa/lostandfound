@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Mac system files
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: OS trash/recycle files
+Thumbs.db
+Desktop.ini
+
+# VSCode settings (if you’re using VS Code)
+.vscode/
+
+# Production builds (optional, depending on setup)
+dist/
+build/
+
+# Local database files (if used)
+*.local

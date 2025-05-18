@@ -1,0 +1,22 @@
+{
+  "name": "lost-and-found-travel-site",
+  "version": "1.0.0",
+  "description": "A travel log and wishlist app featuring Found and Lost destinations.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyleversa/lostandfound.git"
+  },
+  "keywords": ["travel", "node", "express", "mongodb"],
+  "author": "Kyle Purves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyleversa/lostandfound/issues"
+  },
+  "homepage": "https://github.com/kyleversa/lostandfound#readme"
+}

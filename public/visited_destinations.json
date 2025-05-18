@@ -1,0 +1,74 @@
+{
+    "destinations": [
+        {
+            "city": "Paris",
+            "country": "France",
+            "imageUrl": "images/paris.webp",
+            "ratings": {
+                "hospitality": 4,
+                "walkability": 5,
+                "adventure": 3
+            },
+            "experiences": {
+                "unexpected": "Finding a hidden jazz club in Le Marais where locals taught us to dance",
+                "vibe": "Romantic and artistic with a dash of urban sophistication"
+            }
+        },
+        {
+            "city": "New York City",
+            "country": "USA",
+            "imageUrl": "images/new_york_city.webp",
+            "ratings": {
+                "hospitality": 3,
+                "walkability": 5,
+                "adventure": 5
+            },
+            "experiences": {
+                "unexpected": "Stumbling upon a free Shakespeare play in Central Park",
+                "vibe": "Electric and fast-paced, never sleeping, always moving"
+            }
+        },
+        {
+            "city": "Tuscany",
+            "country": "Italy",
+            "imageUrl": "images/tuscany.webp",
+            "ratings": {
+                "hospitality": 5,
+                "walkability": 4,
+                "adventure": 3
+            },
+            "experiences": {
+                "unexpected": "Being invited to a family's olive harvest celebration",
+                "vibe": "Slow-paced, sun-soaked, and deeply authentic"
+            }
+        },
+        {
+            "city": "London",
+            "country": "England",
+            "imageUrl": "images/london.webp",
+            "ratings": {
+                "hospitality": 4,
+                "walkability": 5,
+                "adventure": 4
+            },
+            "experiences": {
+                "unexpected": "Finding a secret speakeasy behind a bookshelf in Soho",
+                "vibe": "Historic grandeur meets modern diversity"
+            }
+        },
+        {
+            "city": "Barcelona",
+            "country": "Spain",
+            "imageUrl": "images/barcelona.webp",
+            "ratings": {
+                "hospitality": 5,
+                "walkability": 4,
+                "adventure": 4
+            },
+            "experiences": {
+                "unexpected": "Being invited to a local family's paella Sunday",
+                "vibe": "Artistic expression meets Mediterranean lifestyle"
+            }
+        }
+    ]
+}

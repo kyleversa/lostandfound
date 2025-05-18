@@ -74,12 +74,12 @@ app.get('/bookinventory/list', async (req, res) => {
         <header class="page-header">
             <div class="header-container">
                 <h1 class="page-title">Lost - Travel Book Library</h1>
-                <p class="page-subtitle">Kyle Purves</p>
+                <p class="page-subtitle">Kyle Versa</p>
             </div>
         </header>
 
         <main><section class="destination-section">
-            <h2 class="destination-title" style="color: #EAEAEA;">Travel Book Inventory</h2>
+            <h2 class="destination-title" style="color: #EAEAEA;">Books That Inspire Me To Travel</h2>
             <div class="destination-divider"></div>`;
 
         // Generate book list
@@ -125,7 +125,7 @@ app.get('/bookinventory/list', async (req, res) => {
 
         html += `</section></main>
         <footer class="page-footer">
-            <p class="copyright-text">&copy; 2025 Kyle Purves. All Rights Reserved.</p>
+            <p class="copyright-text">&copy; 2025 Kyle Versa. All Rights Reserved.</p>
         </footer>
 
         <script>
@@ -139,6 +139,27 @@ app.get('/bookinventory/list', async (req, res) => {
                 .catch(error => console.error("Error deleting book:", error));
         }
         </script>
+
+                <!-- Back to Top Button -->
+        <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+        <script>
+        // Show button on scroll
+        window.onscroll = function () {
+            const btn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "block";
+            } else {
+            btn.style.display = "none";
+            }
+        };
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        </script>
+
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -183,7 +204,7 @@ app.get('/bookinventory/add', function(req, res){
   <header class="page-header">
       <div class="header-container">
           <h1 class="page-title">Lost - Travel Book Library</h1>
-          <p class="page-subtitle">Kyle Purves</p>
+          <p class="page-subtitle">Kyle Versa</p>
       </div>
   </header>
 
@@ -264,7 +285,7 @@ app.get('/bookinventory/add', function(req, res){
   </section></main>
 
   <footer class="page-footer">
-      <p class="copyright-text">&copy; 2025 Kyle Purves. All Rights Reserved.</p>
+      <p class="copyright-text">&copy; 2025 Kyle Versa. All Rights Reserved.</p>
   </footer>
 
   <script>
@@ -280,6 +301,26 @@ app.get('/bookinventory/add', function(req, res){
           }
       }
   </script>
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+    // Show button on scroll
+    window.onscroll = function () {
+        const btn = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+        } else {
+        btn.style.display = "none";
+        }
+    };
+
+    // Scroll to top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    </script>
+
 
   <script src="/lost_script.js"></script>
 
@@ -326,7 +367,7 @@ app.get('/bookinventory/success', (req, res) => {
   <header class="page-header">
       <div class="header-container">
           <h1 class="page-title">Lost - Travel Book Library</h1>
-          <p class="page-subtitle">Kyle Purves</p>
+          <p class="page-subtitle">Kyle Versa</p>
       </div>
   </header>
 
@@ -343,8 +384,29 @@ app.get('/bookinventory/success', (req, res) => {
   </section></main>
 
   <footer class="page-footer">
-      <p class="copyright-text">&copy; 2025 Kyle Purves. All Rights Reserved.</p>
+      <p class="copyright-text">&copy; 2025 Kyle Versa. All Rights Reserved.</p>
   </footer>
+
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+        <script>
+        // Show button on scroll
+        window.onscroll = function () {
+            const btn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            btn.style.display = "block";
+            } else {
+            btn.style.display = "none";
+            }
+        };
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        </script>
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
