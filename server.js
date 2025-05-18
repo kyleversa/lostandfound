@@ -83,13 +83,12 @@ app.get('/medialibrary/list', async (req, res) => {
       </head><body class="book-inventory-page">
       <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <a class="navbar-brand" href="/">Found</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="/">Back to Homepage</a>
               </li>
@@ -260,13 +259,12 @@ app.get('/medialibrary/add', (req, res) => {
     <body>
       <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <a class="navbar-brand" href="/">Found</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="/">Back to Homepage</a>
               </li>
@@ -523,13 +521,12 @@ app.get('/medialibrary/success', (req, res) => {
     <body class="book-inventory-page">
       <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <a class="navbar-brand" href="/">Found</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="/">Back to Homepage</a>
               </li>
@@ -672,13 +669,12 @@ app.get('/bookinventory/list', async (req, res) => {
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="/lost">Lost</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
+              <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link" href="/lost">Back to Homepage</a>
                 </li>
@@ -808,13 +804,12 @@ app.get('/bookinventory/add', function(req, res){
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="/lost">Lost</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="/lost">Back to Homepage</a>
             </li>
@@ -973,13 +968,12 @@ app.get('/bookinventory/success', (req, res) => {
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="/lost">Lost</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="/lost">Back to Homepage</a>
             </li>
