@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,16 +41,20 @@ const bookSchema = new mongoose.Schema({
 });
 const Book = mongoose.model('Book', bookSchema);
 
+// Open Library cover URL helper
+function getOpenLibraryImageUrl(title, author) {
+  return `https://covers.openlibrary.org/b/title/${encodeURIComponent(title)}-M.jpg`;
+}
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+
 
 // MongoDB Connection
 const mongoURI = process.env.MONGODB_URI;
-mongoose.connect(mongoURI)
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch(err => console.error("MongoDB connection error:", err));
+
 
 
 // Media Schema
@@ -590,7 +594,6 @@ app.delete('/medialibrary/delete/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Found server running on http://localhost:${PORT}`);
 });
@@ -603,17 +606,8 @@ function getOpenLibraryImageUrl(title, author) {
 }
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect to MongoDB Atlas
-const mongoURI = process.env.MONGODB_URI;
-mongoose.connect(mongoURI)
-    .then(() => console.log("Connected to MongoDB Atlas"))
-    .catch(err => console.error("MongoDB connection error:", err));
 
-// Define Book Schema
 
 
 
@@ -1035,7 +1029,7 @@ app.delete('/bookinventory/delete/:id', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
@@ -1046,3 +1040,9 @@ app.listen(PORT, () => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
+
+
+
+
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
