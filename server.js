@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -40,7 +41,7 @@ const bookSchema = new mongoose.Schema({
 });
 const Book = mongoose.model('Book', bookSchema);
 
-const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -53,17 +54,8 @@ mongoose.connect(mongoURI)
 
 
 // Media Schema
-const mediaSchema = new mongoose.Schema({
-  title: String,
-  creator: String,       // director or artist
-  type: String,          // film, show, documentary
-  date: String,          // release year
-  website: String,
-  tags: [String],
-  location: String,       // place it reminds you of
-  posterUrl: String
-});
-const Media = mongoose.model('Media', mediaSchema);
+
+
 
 
 // === ROUTES ===
@@ -610,7 +602,7 @@ function getOpenLibraryImageUrl(title, author) {
   return `https://covers.openlibrary.org/b/title/${encodeURIComponent(title)}-M.jpg`;
 }
 
-const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -622,17 +614,9 @@ mongoose.connect(mongoURI)
     .catch(err => console.error("MongoDB connection error:", err));
 
 // Define Book Schema
-const bookSchema = new mongoose.Schema({
-    title: String,
-    author: String,
-    publisher: String,
-    date: String,
-    website: String,
-    tags: [String],
-    location: String
-});
 
-const Book = mongoose.model('Book', bookSchema);
+
+
 
 // Main route - Serve Lost Page
 app.get('/', function(req, res){
