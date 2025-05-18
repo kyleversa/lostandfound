@@ -182,6 +182,10 @@ app.get('/medialibrary/list', async (req, res) => {
           }
         </script>
 
+        <!-- Bootstrap JS (for dropdown menu functionality) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  
+
+
       </body></html>`;
 
     res.send(html);
@@ -416,6 +420,10 @@ app.get('/medialibrary/add', (req, res) => {
       }
     </script>
 
+    <!-- Bootstrap JS (for dropdown menu functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
     </body>
     </html>
     
@@ -438,6 +446,10 @@ app.get('/medialibrary/add', (req, res) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
+
+    <!-- Bootstrap JS (for dropdown menu functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
     </body>
     </html>
@@ -767,6 +779,10 @@ app.get('/bookinventory/list', async (req, res) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         </script>
+
+        <!-- Bootstrap JS (for dropdown menu functionality) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
