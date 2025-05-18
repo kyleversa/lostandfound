@@ -81,18 +81,26 @@ app.get('/medialibrary/list', async (req, res) => {
       <link rel="stylesheet" href="/found_style.css">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
       </head><body class="book-inventory-page">
-      <nav class="navbar navbar-expand-lg bg-warm">
+      <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <ul class="navbar-nav nav-links-found">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Back to Homepage</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/medialibrary/add">Add Another Media</a>
-            </li>
-          </ul>
+          <a class="navbar-brand" href="/">Found</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Back to Homepage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/medialibrary/add">Add Another Media</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
+
 
 
       <header class="page-header">
@@ -246,21 +254,29 @@ app.get('/medialibrary/add', (req, res) => {
       </style>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg bg-warm">
+      <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <ul class="navbar-nav nav-links-found">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Back to Homepage</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/medialibrary/list">View Media Library</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/medialibrary/add">Add Another</a>
-            </li>
-          </ul>
+          <a class="navbar-brand" href="/">Found</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Back to Homepage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/medialibrary/list">View Media Library</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/medialibrary/add">Add Another</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
+
 
       <header class="page-header">
         <h1 class="page-title">Found - Media Library</h1>
@@ -493,15 +509,29 @@ app.get('/medialibrary/success', (req, res) => {
       </style>
     </head>
     <body class="book-inventory-page">
-      <nav class="navbar navbar-expand-lg bg-warm">
+      <nav class="navbar navbar-expand-lg" style="background-color: #FFD59A;">
         <div class="container">
-          <ul class="navbar-nav nav-links-found">
-            <li class="nav-item"><a class="nav-link" href="/">Back to Homepage</a></li>
-            <li class="nav-item"><a class="nav-link" href="/medialibrary/list">View Media Library</a></li>
-            <li class="nav-item"><a class="nav-link" href="/medialibrary/add">Add Another Media</a></li>
-          </ul>
+          <a class="navbar-brand" href="/">Found</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Back to Homepage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/medialibrary/list">View Media Library</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/medialibrary/add">Add Another</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
+
 
       <header class="page-header">
         <h1 class="page-title">Found - Media Library</h1>
@@ -629,23 +659,25 @@ app.get('/bookinventory/list', async (req, res) => {
         <body class="lost-theme book-inventory-page">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link book-nav-link" href="/bookinventory/add">Add New Book</a>
-                    </li>
-                </ul>
-                </div>
+          <div class="container">
+            <a class="navbar-brand" href="/lost">Lost</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/lost">Back to Homepage</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/bookinventory/add">Add New Book</a>
+                </li>
+              </ul>
             </div>
+          </div>
         </nav>
+
 
         <header class="page-header">
             <div class="header-container">
@@ -758,24 +790,29 @@ app.get('/bookinventory/add', function(req, res){
   </head>
   <body class="lost-theme book-inventory-page">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <a class="navbar-brand" href="/lost">Lost</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/bookinventory/list">View Book Inventory</a>
-              </li>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/lost">Back to Homepage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bookinventory/list">View Book Inventory</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bookinventory/add">Add Another Book</a>
+            </li>
           </ul>
-          </div>
+        </div>
       </div>
-  </nav>
+    </nav>
+
 
   <header class="page-header">
       <div class="header-container">
@@ -918,27 +955,29 @@ app.get('/bookinventory/success', (req, res) => {
   </head>
   <body class="lost-theme book-inventory-page">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <a class="navbar-brand" href="/lost">Lost</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/lost">Back to Homepage</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/bookinventory/list">View Book Inventory</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link book-nav-link" href="/bookinventory/add">Add Another Book</a>
-              </li>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/lost">Back to Homepage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bookinventory/list">View Book Inventory</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bookinventory/add">Add Another Book</a>
+            </li>
           </ul>
-          </div>
+        </div>
       </div>
-  </nav>
+    </nav>
+
 
   <header class="page-header">
       <div class="header-container">
