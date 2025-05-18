@@ -27,7 +27,7 @@ app.get('/lost', (req, res) => {
 });
 
 // MongoDB endpoints
-MongoClient.connect(MONGO_URI, { useUnifiedTopology: true })
+MongoClient.connect(MONGO_URI)
   .then(client => {
     console.log('Connected to MongoDB Atlas');
     const db = client.db(); // Defaults to database from URI
