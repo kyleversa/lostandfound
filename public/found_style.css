@@ -805,3 +805,28 @@ input:focus, textarea:focus {
     color: #A67C52;
 }
 
+/* Mobile Dropdown Fix – Match Lost Site */
+.navbar-collapse {
+  background-color: #FFD59A; /* or match your warm theme */
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  color: #8A4E00;
+  text-align: center;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #A67C52;
+  background-color: #fff3e0;
+  border-radius: 5px;
+}
+
