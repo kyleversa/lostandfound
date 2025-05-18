@@ -245,9 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p><strong>What Draws Me To It:</strong> ${dest.planning.inspiration}</p>
                     </div>
                     <div class="ratings mt-3">
-                    <p>📍🗺️ <strong>Popular Travel Spot:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
-                    <p>📸🎨 <strong>Postcard-Worthy Views:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
-                    <p>💰💵 <strong>Budget Friendly:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
+                    <p>Popular Travel Spot 📍🗺️:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.popularity)}</span></p>
+                    <p>Postcard-Worthy Views 📸🎨:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.views)}</span></p>
+                    <p>Budget Friendly 💰💵:</strong> <span class="stars">${'⭐'.repeat(dest.ratings.budget)}</span></p>
                     </div>
                 </div>
                 </div>
